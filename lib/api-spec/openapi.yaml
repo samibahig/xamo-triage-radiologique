@@ -1,0 +1,132 @@
+openapi: 3.1.0
+info:
+  # Do not change the title, if the title changes, the import paths will be broken
+  title: Api
+  version: 0.1.0
+  description: API specification
+servers:
+  - url: /api
+    description: Base API path
+tags:
+  - name: health
+    description: Health operations
+  - name: triage
+    description: Educational radiology pre-triage
+paths:
+  /healthz:
+    get:
+      operationId: healthCheck
+      tags: [health]
+      summary: Health check
+      description: Returns server health status
+      responses:
+        "200":
+          description: Healthy
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthStatus"
+  /triage/analyze:
+    post:
+      operationId: analyzeTriage
+      tags: [triage]
+      summary: Suggest imaging topics for a physician discussion
+      description: Returns educational, non-diagnostic imaging suggestions and questions to ask a clinician.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TriageInput"
+      responses:
+        "200":
+          description: Educational triage result
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TriageResult"
+        "400":
+          description: Invalid request
+        "500":
+          description: Analysis unavailable
+components:
+  schemas:
+    HealthStatus:
+      type: object
+      properties:
+        status:
+          type: string
+      required:
+        - status
+    TriageInput:
+      type: object
+      properties:
+        symptoms:
+          type: string
+          minLength: 10
+          maxLength: 4000
+        age:
+          type: ["number", "null"]
+          minimum: 0
+          maximum: 120
+        sex:
+          type: string
+          enum: [female, male, intersex, prefer_not_to_say, other]
+        duration:
+          type: string
+          maxLength: 200
+        knownConditions:
+          type: string
+          maxLength: 1200
+        medications:
+          type: string
+          maxLength: 1200
+        previousImaging:
+          type: string
+          maxLength: 1200
+        pregnancyPotential:
+          type: string
+          enum: [yes, no, unknown, not_applicable]
+        language:
+          type: string
+          enum: [fr, en]
+      required: [symptoms, age, sex, duration, knownConditions, medications, previousImaging, pregnancyPotential, language]
+    TriageExam:
+      type: object
+      properties:
+        name:
+          type: string
+        why:
+          type: string
+        modality:
+          type: string
+        priority:
+          type: string
+          enum: [possible, discuss_soon, emergency]
+      required: [name, why, modality, priority]
+    TriageResult:
+      type: object
+      properties:
+        emergency:
+          type: boolean
+        urgency:
+          type: string
+          enum: [routine, discuss_soon, urgent, emergency]
+        message:
+          type: string
+        exams:
+          type: array
+          items:
+            $ref: "#/components/schemas/TriageExam"
+        questions:
+          type: array
+          items:
+            type: string
+        nextSteps:
+          type: array
+          items:
+            type: string
+        safetyNote:
+          type: string
+      required: [emergency, urgency, message, exams, questions, nextSteps, safetyNote]
+
