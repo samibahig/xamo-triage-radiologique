@@ -2,6 +2,7 @@ import express, { type Express } from "express";
 import cors from "cors";
 import pinoHttp from "pino-http";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import router from "./routes";
 import { logger } from "./lib/logger";
 
@@ -33,7 +34,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api", router);
 
 if (process.env.SERVE_FRONTEND === "true") {
-  app.use(express.static(path.resolve(process.cwd(), "artifacts/xamo-triage/dist/public")));
+  const frontendDist = path.resolve(
+    path.dirname(fileURLToPath(import.meta.url)),
+    "../../xamo-triage/dist/public",
+  );
+  app.use(express.static(frontendDist));
 }
 
 export default app;

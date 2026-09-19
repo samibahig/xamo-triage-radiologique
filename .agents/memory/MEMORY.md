@@ -1,0 +1,2 @@
+- [GitHub connector bulk writes](github-connector-bulk-writes.md) — repository creation works, but bulk source writes may trigger proxy rate limits and Cloudflare blocking.
+- [Free Hugging Face deployment](hugging-face-free-deployment.md) — deploy Xamo by reusing the grandfathered CPU Docker Space and using Hugging Face inference in production.

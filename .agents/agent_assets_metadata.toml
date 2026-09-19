@@ -1,0 +1,22 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "sWfSkckwFpkSo6NSokFZL"
+uri = "file://exports/xamo-triage-radiologique-source.zip"
+type = "unspecified"
+title = "xamo-triage-radiologique-source.zip"
+description = "Archive complète à décompresser avant transfert vers GitHub : React, API Node, Dockerfile, package.json et fichiers pnpm. Aucun app.py ni secret."
+logical_id = "7984236d-bb6e-43ac-aaf3-31d03ce6a4bf"
+content_hash = "sha256:ea8e50a94dc24fc336afe0d00603ef52aa3cd13b8adbbf68f708f929b11d3559"
+size = 180409
+mtime_ms = 1788447267283
+storage_uri = "gcs://replit-rams-assets-janeway/rams/assets/repl:2a00f816-0673-4baf-9046-ac05cf89bb50/7984236d-bb6e-43ac-aaf3-31d03ce6a4bf/3ea99ec2-e1f6-4373-b7ce-11b49f316faa"
+storage_version_token = "1788466111011718"
+content_type = "application/octet-stream"
+
+[[outputs]]
+id = "4KmrN1O8j1h9pNWVn__ww"
+uri = "file://.local/outputs/XAMO-Triage-Radiologique.pdf"
+type = "pdf"
+title = "XAMO Triage Radiologique.pdf"

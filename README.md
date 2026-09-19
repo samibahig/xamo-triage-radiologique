@@ -30,9 +30,18 @@ pnpm --filter @workspace/xamo-triage run dev
 
 Pour activer l’analyse IA, les variables `AI_INTEGRATIONS_OPENAI_BASE_URL` et `AI_INTEGRATIONS_OPENAI_API_KEY` doivent être disponibles côté serveur.
 
-## Hugging Face Spaces
+## Déploiement Hugging Face
 
-Le dépôt est préparé pour Hugging Face Spaces avec Docker. Ajouter les deux variables IA comme **Secrets** du Space, jamais dans le code ou dans un fichier public.
+L’application est déployée dans le Space Docker :
+
+https://huggingface.co/spaces/samibahig-md/medai-vision
+
+Le Space utilise le port `7860` et l’API d’inférence Hugging Face. Les variables suivantes sont configurées comme **Secrets** du Space :
+
+- `AI_PROVIDER=huggingface`
+- `HUGGINGFACE_TOKEN`
+
+Pour le développement dans Replit, le serveur continue d’utiliser `AI_INTEGRATIONS_OPENAI_BASE_URL` et `AI_INTEGRATIONS_OPENAI_API_KEY`. Aucun secret ne doit être ajouté au code ou à un fichier public.
 
 ## GitHub
 
