@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Xamo Triage Radiologique"
+description = "Une expérience web bilingue qui aide les patients à préparer une discussion avec leur médecin au sujet d’un examen d’imagerie possible, avec consentement, sécurité et limites éducatives clairement affichés."
+version = "1.0.0"
+id = "artifacts/xamo-triage"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 24577
+
+[services.development]
+run = "pnpm --filter @workspace/xamo-triage run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/xamo-triage", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/xamo-triage/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "24577"
+BASE_PATH = "/"

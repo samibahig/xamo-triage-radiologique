@@ -1,0 +1,42 @@
+[
+  {
+    "id": "a1d0a9c6-88a1-4df7-9bea-4f6a2f9d2b01",
+    "position": 1,
+    "filepath": "src/pages/slides/Title.tsx",
+    "title": "XAMO Triage Radiologique",
+    "description": "Présentation du projet et de sa mission éducative.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "b7f3128d-20d9-4bc5-a6c4-8f3f314c9a02",
+    "position": 2,
+    "filepath": "src/pages/slides/Need.tsx",
+    "title": "Le besoin",
+    "description": "Le problème utilisateur et la valeur du prétriage.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "c2e8b4f1-75e2-48c4-9a90-1b5ad782d603",
+    "position": 3,
+    "filepath": "src/pages/slides/Flow.tsx",
+    "title": "Un parcours guidé et bilingue",
+    "description": "Le parcours patient, du consentement aux résultats.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "d9c61e54-3b2e-4d7a-8c71-2f4b4b93e104",
+    "position": 4,
+    "filepath": "src/pages/slides/Architecture.tsx",
+    "title": "Une architecture prête pour le déploiement",
+    "description": "Les briques techniques de l'application.",
+    "speakerNotes": ""
+  },
+  {
+    "id": "e4a72f90-6c13-4a8b-b512-7d88e1c5f205",
+    "position": 5,
+    "filepath": "src/pages/slides/Safety.tsx",
+    "title": "Sécurité médicale et prochaines étapes",
+    "description": "Les garde-fous médicaux et la suite du déploiement.",
+    "speakerNotes": ""
+  }
+]
