@@ -1,0 +1,28 @@
+kind = "slides"
+previewPath = "/xamo-triage-deck/"
+title = "XAMO Triage Radiologique"
+description = "Présentation courte du projet XAMO Triage Radiologique, son parcours bilingue, son architecture React/Node Docker et ses garde-fous médicaux."
+version = "1.0.0"
+id = "artifacts/xamo-triage-deck"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/xamo-triage-deck/" ]
+localPort = 18775
+
+[services.development]
+run = "pnpm --filter @workspace/xamo-triage-deck run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/xamo-triage-deck", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/xamo-triage-deck/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18775"
+BASE_PATH = "/xamo-triage-deck/"
